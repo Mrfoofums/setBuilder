@@ -1,5 +1,7 @@
-# Bboybuilder
+# SetBuilder
+This project allows you to make sets of things that are related to each other, and then add meta data to those sets.
 
+##Info
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-rc.0.
 
 ## Development server
