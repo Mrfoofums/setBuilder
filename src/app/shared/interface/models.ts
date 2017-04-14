@@ -7,6 +7,7 @@ export interface Item {
 export interface AppState {
     items: Item [];
     numberOfItems: number;
+    selectedItem: Item;
 }
 
 export const ACTIONS = {
