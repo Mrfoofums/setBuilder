@@ -14,8 +14,8 @@ export function reducer(state:AppState = initialState, action: Action ):AppState
     let items: Item[]  = state.items;
     let item: Item;
     let returnState: AppState;
-    console.log('reducing');
     switch (action.type) {
+
         case ACTIONS.ADD_ITEM:
             const nextItem: Item = {
                 name: action.payload.name ,
@@ -29,6 +29,7 @@ export function reducer(state:AppState = initialState, action: Action ):AppState
                 selectedItem: state.selectedItem
             };
             break;
+
         case ACTIONS.REMOVE_ITEM:
         const removal: number = items.indexOf(action.payload.item);
            returnState = {
@@ -41,5 +42,5 @@ export function reducer(state:AppState = initialState, action: Action ):AppState
            default:
            returnState = state;
      }
-        return returnState;
+        return Object.freeze(returnState);
 }
