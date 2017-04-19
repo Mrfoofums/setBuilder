@@ -2,4 +2,10 @@
   click me!
 </div>
 <pre>{{items | async | json}}</pre>
+<div *ngFor="let item of items | async" (click)="select(item)" class="item">
+    {{item.name}}
+</div>
+<div class="selectedItem">
+  Selected item is {{selectedItem}}
+</div>
 

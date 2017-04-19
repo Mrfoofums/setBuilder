@@ -1,46 +1,25 @@
-import { AppState, ACTIONS,Item }from '../interface/models';
+import { AppState, ACTIONS,Item, ItemSet, initialState } from '../interface/models';
 import { ActionReducer, Action } from '@ngrx/store';
 
+type ReadonlyAppState = Readonly<AppState>;
 
-const initialState: AppState = {
-    items: [],
-   numberOfItems: 0,
-   selectedItem: null
-};
+export function reducer(state: AppState = initialState, action: Action ): AppState {
+    let returnState: AppState = state;
+    let itemToAdd: Item;
 
-
-
-export function reducer(state:AppState = initialState, action: Action ):AppState{
-    let items: Item[]  = state.items;
-    let item: Item;
-    let returnState: AppState;
     switch (action.type) {
-
         case ACTIONS.ADD_ITEM:
-            const nextItem: Item = {
-                name: action.payload.name ,
-                id: state.items.length,
-                meta: action.payload.meta
-             };
-            item = action.payload;
-            returnState = {
-                items: [...items, nextItem],
-                numberOfItems: state.numberOfItems + 1,
-                selectedItem: state.selectedItem
+            itemToAdd = {
+                name:action.payload.name,
+                id: state.items.length
             };
-            break;
-
-        case ACTIONS.REMOVE_ITEM:
-        const removal: number = items.indexOf(action.payload.item);
-           returnState = {
-               items: items.filter( (curItem) => (items.indexOf(curItem) !== removal)),
-               numberOfItems: state.numberOfItems - 1,
-               selectedItem:state.selectedItem
-           };
-           break;
-
+        returnState = {
+            items: [...state.items, itemToAdd]
+        };
+        break;
            default:
            returnState = state;
      }
+        console.log(returnState.items);
         return Object.freeze(returnState);
 }
