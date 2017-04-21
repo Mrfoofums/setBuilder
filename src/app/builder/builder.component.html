@@ -1,6 +1,7 @@
 <div (click)="clicked()" class="container">
   click me!
 </div>
+<p (click)="viewHistory()">HISTORY LOG</p>
 <!--<pre>{{items | async | json}}</pre>-->
 <div *ngFor="let item of items | async" class="item">
     <p (click)="select(item)">{{item.name}}<p>

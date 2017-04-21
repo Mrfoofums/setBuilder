@@ -15,6 +15,7 @@ export interface AppState {
     items: Array<Item>;
     selectedItemId?: number;
     itemSets?: Array<ItemSet>;
+    history: History;
 }
 
 const defaultSet:ItemSet ={
@@ -24,10 +25,14 @@ const defaultSet:ItemSet ={
 
 export const initialState: AppState = {
     items: [],
-    itemSets:[defaultSet]
+    itemSets:[defaultSet],
+    history:[]
 };
 
+export type History = Array<Action>;
+
 export const ACTIONS = {
+  VIEW_HISTORY:'VIEW_HISTORY',  
   ADD_ITEM: '[ITEM]ADD ITEM',
   REMOVE_ITEM: '[NUMBER]REMOVE ITEM',
   SELECT_ITEM: '[NUMBER] SELECT_ITEM',

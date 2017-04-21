@@ -15,17 +15,24 @@ export function reducer(state: AppState = initialState, action: Action ): AppSta
             };
         returnState = {
             ...state,
-            items: [...state.items, itemToAdd]
+            items: [...state.items, itemToAdd],
+            history:[...state.history, action]
         };
         break;
 
         case ACTIONS.SELECT_ITEM:
-        console.log("payload is");
-        console.log(action.payload);
             returnState = {
                 ...state,
-                selectedItemId: action.payload
+                selectedItemId: action.payload,
+                history:[...state.history, action]
             }
+            break;
+        case ACTIONS.VIEW_HISTORY:
+            returnState = {
+                ...state,
+                history:[...state.history, action]
+            };
+            console.log(state.history);
             break;
            default:
            returnState = state;

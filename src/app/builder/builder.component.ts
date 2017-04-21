@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Item, ItemSet, AppState } from '../shared/interface/models';
-import { ADD_ITEM, SELECT_ITEM } from '../shared/reducer';
+import { ADD_ITEM, SELECT_ITEM,VIEW_HISTORY } from '../shared/reducer';
 import { Store} from '@ngrx/store';
 import 'rxjs/add/operator/do';
 import { Observable } from 'rxjs/Observable';
@@ -21,7 +21,7 @@ export class BuilderComponent implements OnInit {
   }
 
   clicked() {
-    let payload: Item = {
+    const payload: Item = {
       name: 'test'
     };
 
@@ -30,5 +30,9 @@ export class BuilderComponent implements OnInit {
 
   select(item: Item) {
     this.store.dispatch(SELECT_ITEM(item.id));
+  }
+
+  viewHistory(){
+    this.store.dispatch(VIEW_HISTORY());
   }
 }
