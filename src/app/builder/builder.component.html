@@ -1,11 +1,11 @@
 <div (click)="clicked()" class="container">
   click me!
 </div>
-<pre>{{items | async | json}}</pre>
-<div *ngFor="let item of items | async" (click)="select(item)" class="item">
-    {{item.name}}
+<!--<pre>{{items | async | json}}</pre>-->
+<div *ngFor="let item of items | async" class="item">
+    <p (click)="select(item)">{{item.name}}<p>
 </div>
 <div class="selectedItem">
-  Selected item is {{selectedItem}}
+  Selected item is: {{selectedItemId | async}}
 </div>
 

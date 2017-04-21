@@ -13,7 +13,7 @@ export interface ItemSet {
 
 export interface AppState {
     items: Array<Item>;
-    selectedItem?: number;
+    selectedItemId?: number;
     itemSets?: Array<ItemSet>;
 }
 
@@ -28,23 +28,14 @@ export const initialState: AppState = {
 };
 
 export const ACTIONS = {
-  ADD_ITEM: 'ADD ITEM',
-  REMOVE_ITEM: 'REMOVE ITEM',
-  SELECT_ITEM: 'SELECT_ITEM'
+  ADD_ITEM: '[ITEM]ADD ITEM',
+  REMOVE_ITEM: '[NUMBER]REMOVE ITEM',
+  SELECT_ITEM: '[NUMBER] SELECT_ITEM',
+  DELETE_ITEM: '[ID] DELETE_ITEM' 
 };
 
 
-export const SELECT_ITEM = (selectedItem: Item): Action => ({
-    type: ACTIONS.SELECT_ITEM,
-    payload:{
-        item: selectedItem
-    }
-});
 
-export const ADD_ITEM = (add:Item): Action =>({
-    type: ACTIONS.ADD_ITEM,
-    payload: {
-        item: add
-    }
-});
+
+
 

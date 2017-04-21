@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Item, ItemSet, AppState, ADD_ITEM,SELECT_ITEM } from '../shared/interface/models';
+import { Item, ItemSet, AppState } from '../shared/interface/models';
+import { ADD_ITEM, SELECT_ITEM } from '../shared/reducer';
 import { Store} from '@ngrx/store';
 import 'rxjs/add/operator/do';
 import { Observable } from 'rxjs/Observable';
@@ -10,10 +11,10 @@ import { Observable } from 'rxjs/Observable';
 })
 export class BuilderComponent implements OnInit {
   items: Observable<Item[]>;
-  selectedItem: Observable<number>;
+  selectedItemId: Observable<number>;
   constructor(private store: Store<AppState>) { 
     this.items = store.select(state => state.items);
-    this.selectedItem = store.select(state => state.selectedItem);
+    this.selectedItemId = store.select(state => state.selectedItemId);
   }
 
   ngOnInit() {
@@ -27,7 +28,7 @@ export class BuilderComponent implements OnInit {
     this.store.dispatch(ADD_ITEM(payload));
   }
 
-  select(item:Item) {
-    this.store.dispatch(SELECT_ITEM(item));
+  select(item: Item) {
+    this.store.dispatch(SELECT_ITEM(item.id));
   }
 }

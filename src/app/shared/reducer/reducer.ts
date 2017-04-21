@@ -14,12 +14,21 @@ export function reducer(state: AppState = initialState, action: Action ): AppSta
                 id: state.items.length
             };
         returnState = {
+            ...state,
             items: [...state.items, itemToAdd]
         };
         break;
+
+        case ACTIONS.SELECT_ITEM:
+        console.log("payload is");
+        console.log(action.payload);
+            returnState = {
+                ...state,
+                selectedItemId: action.payload
+            }
+            break;
            default:
            returnState = state;
      }
-        console.log(returnState.items);
         return Object.freeze(returnState);
 }
