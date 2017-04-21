@@ -7,17 +7,24 @@ import { BuilderComponent } from './builder/builder.component';
 import { StoreModule } from '@ngrx/store';
 import {reducer} from './shared/reducer/reducer';
 import { ItemComponent } from './item/item.component';
+import { ItemEditComponent } from './item-edit/item-edit.component';
+import { MenuComponent } from './menu/menu.component';
+
+import { MdCardModule} from '@angular/material';
 
 @NgModule({
   declarations: [
     AppComponent,
     BuilderComponent,
-    ItemComponent
+    ItemComponent,
+    ItemEditComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    MdCardModule,
     StoreModule.provideStore(reducer)
   ],
   providers: [],

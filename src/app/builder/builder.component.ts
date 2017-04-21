@@ -11,10 +11,10 @@ import { Observable } from 'rxjs/Observable';
 })
 export class BuilderComponent implements OnInit {
   items: Observable<Item[]>;
-  selectedItemId: Observable<number>;
+  selectedItem: Observable<Item>;
   constructor(private store: Store<AppState>) { 
     this.items = store.select(state => state.items);
-    this.selectedItemId = store.select(state => state.selectedItemId);
+    this.selectedItem = store.select(state => state.selectedItem);
   }
 
   ngOnInit() {
@@ -32,7 +32,7 @@ export class BuilderComponent implements OnInit {
     this.store.dispatch(SELECT_ITEM(item.id));
   }
 
-  viewHistory(){
+  viewHistory() {
     this.store.dispatch(VIEW_HISTORY());
   }
 }

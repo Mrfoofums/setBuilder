@@ -3,7 +3,7 @@ import { Action } from '@ngrx/store';
 
 export const SELECT_ITEM = (selectedItemId: number): Action => ({
     type: ACTIONS.SELECT_ITEM,
-    payload:selectedItemId
+    payload: selectedItemId
 });
 
 export const ADD_ITEM = (add: Item): Action => ({

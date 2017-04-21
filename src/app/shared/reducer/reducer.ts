@@ -10,22 +10,24 @@ export function reducer(state: AppState = initialState, action: Action ): AppSta
     switch (action.type) {
         case ACTIONS.ADD_ITEM:
             itemToAdd = {
-                name:action.payload.name,
+                name: action.payload.name,
                 id: state.items.length
             };
         returnState = {
             ...state,
             items: [...state.items, itemToAdd],
-            history:[...state.history, action]
+            history: [...state.history, action]
         };
         break;
 
         case ACTIONS.SELECT_ITEM:
+        let selectedItem = state.items[action.payload];
             returnState = {
                 ...state,
-                selectedItemId: action.payload,
-                history:[...state.history, action]
-            }
+                selectedItem: selectedItem,
+                history: [...state.history, action]
+            };
+            console.log(returnState);
             break;
         case ACTIONS.VIEW_HISTORY:
             returnState = {

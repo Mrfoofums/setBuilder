@@ -13,7 +13,7 @@ export interface ItemSet {
 
 export interface AppState {
     items: Array<Item>;
-    selectedItemId?: number;
+    selectedItem?: Item;
     itemSets?: Array<ItemSet>;
     history: History;
 }
